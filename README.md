@@ -4,7 +4,7 @@
 
 *数据库连接*  jdbc:mysql://rm-bp19k8vtd655i21r53o.mysql.rds.aliyuncs.com:3306/hmdatabase
 
-*user* root
+*user* root <br/> 
 *password* TGX731875920
 
 ## Doc 所有项目文档
