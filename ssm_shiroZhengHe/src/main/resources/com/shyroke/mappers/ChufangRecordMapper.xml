@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shyroke.mapper.ChufangRecordMapper">
+  <resultMap id="BaseResultMap" type="com.shyroke.entity.ChufangRecord">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="patient_id" jdbcType="INTEGER" property="patientId" />
+    <result column="doctor_id" jdbcType="INTEGER" property="doctorId" />
+    <result column="bingqing" jdbcType="VARCHAR" property="bingqing" />
+    <result column="chufang" jdbcType="VARCHAR" property="chufang" />
+    <result column="beizhu" jdbcType="VARCHAR" property="beizhu" />
+    <result column="time" jdbcType="DATE" property="time" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, patient_id, doctor_id, bingqing, chufang, beizhu, time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from chufangrecord
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from chufangrecord
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shyroke.entity.ChufangRecord">
+    insert into chufangrecord (id, patient_id, doctor_id, 
+      bingqing, chufang, beizhu, 
+      time)
+    values (#{id,jdbcType=INTEGER}, #{patientId,jdbcType=INTEGER}, #{doctorId,jdbcType=INTEGER}, 
+      #{bingqing,jdbcType=VARCHAR}, #{chufang,jdbcType=VARCHAR}, #{beizhu,jdbcType=VARCHAR}, 
+      #{time,jdbcType=DATE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shyroke.entity.ChufangRecord">
+    insert into chufangrecord
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="patientId != null">
+        patient_id,
+      </if>
+      <if test="doctorId != null">
+        doctor_id,
+      </if>
+      <if test="bingqing != null">
+        bingqing,
+      </if>
+      <if test="chufang != null">
+        chufang,
+      </if>
+      <if test="beizhu != null">
+        beizhu,
+      </if>
+      <if test="time != null">
+        time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="patientId != null">
+        #{patientId,jdbcType=INTEGER},
+      </if>
+      <if test="doctorId != null">
+        #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="bingqing != null">
+        #{bingqing,jdbcType=VARCHAR},
+      </if>
+      <if test="chufang != null">
+        #{chufang,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu != null">
+        #{beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shyroke.entity.ChufangRecord">
+    update chufangrecord
+    <set>
+      <if test="patientId != null">
+        patient_id = #{patientId,jdbcType=INTEGER},
+      </if>
+      <if test="doctorId != null">
+        doctor_id = #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="bingqing != null">
+        bingqing = #{bingqing,jdbcType=VARCHAR},
+      </if>
+      <if test="chufang != null">
+        chufang = #{chufang,jdbcType=VARCHAR},
+      </if>
+      <if test="beizhu != null">
+        beizhu = #{beizhu,jdbcType=VARCHAR},
+      </if>
+      <if test="time != null">
+        time = #{time,jdbcType=DATE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shyroke.entity.ChufangRecord">
+    update chufangrecord
+    set patient_id = #{patientId,jdbcType=INTEGER},
+      doctor_id = #{doctorId,jdbcType=INTEGER},
+      bingqing = #{bingqing,jdbcType=VARCHAR},
+      chufang = #{chufang,jdbcType=VARCHAR},
+      beizhu = #{beizhu,jdbcType=VARCHAR},
+      time = #{time,jdbcType=DATE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPatientId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+  	select * from chufangrecord 
+  	where patient_id=#{patientId}
+  </select>
+  
+</mapper>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.shyroke.mapper.MedicalMapper">
+  <resultMap id="BaseResultMap" type="com.shyroke.entity.Medical">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="chengfen" jdbcType="VARCHAR" property="chengfen" />
+    <result column="yongfa" jdbcType="VARCHAR" property="yongfa" />
+    <result column="zuoyong" jdbcType="VARCHAR" property="zuoyong" />
+    <result column="fuzuoyong" jdbcType="VARCHAR" property="fuzuoyong" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="baozhiqi" jdbcType="VARCHAR" property="baozhiqi" />
+    <result column="shenchanriqi" jdbcType="DATE" property="shenchanriqi" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="jixing" jdbcType="VARCHAR" property="jixing" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, name, chengfen, yongfa, zuoyong, fuzuoyong, price, baozhiqi, shenchanriqi, company, 
+    jixing
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from medical
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from medical
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.shyroke.entity.Medical">
+    insert into medical (id, name, chengfen, 
+      yongfa, zuoyong, fuzuoyong, 
+      price, baozhiqi, shenchanriqi, 
+      company, jixing)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{chengfen,jdbcType=VARCHAR}, 
+      #{yongfa,jdbcType=VARCHAR}, #{zuoyong,jdbcType=VARCHAR}, #{fuzuoyong,jdbcType=VARCHAR}, 
+      #{price,jdbcType=VARCHAR}, #{baozhiqi,jdbcType=VARCHAR}, #{shenchanriqi,jdbcType=DATE}, 
+      #{company,jdbcType=VARCHAR}, #{jixing,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.shyroke.entity.Medical">
+    insert into medical
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="chengfen != null">
+        chengfen,
+      </if>
+      <if test="yongfa != null">
+        yongfa,
+      </if>
+      <if test="zuoyong != null">
+        zuoyong,
+      </if>
+      <if test="fuzuoyong != null">
+        fuzuoyong,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="baozhiqi != null">
+        baozhiqi,
+      </if>
+      <if test="shenchanriqi != null">
+        shenchanriqi,
+      </if>
+      <if test="company != null">
+        company,
+      </if>
+      <if test="jixing != null">
+        jixing,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="chengfen != null">
+        #{chengfen,jdbcType=VARCHAR},
+      </if>
+      <if test="yongfa != null">
+        #{yongfa,jdbcType=VARCHAR},
+      </if>
+      <if test="zuoyong != null">
+        #{zuoyong,jdbcType=VARCHAR},
+      </if>
+      <if test="fuzuoyong != null">
+        #{fuzuoyong,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="baozhiqi != null">
+        #{baozhiqi,jdbcType=VARCHAR},
+      </if>
+      <if test="shenchanriqi != null">
+        #{shenchanriqi,jdbcType=DATE},
+      </if>
+      <if test="company != null">
+        #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="jixing != null">
+        #{jixing,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.shyroke.entity.Medical">
+    update medical
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="chengfen != null">
+        chengfen = #{chengfen,jdbcType=VARCHAR},
+      </if>
+      <if test="yongfa != null">
+        yongfa = #{yongfa,jdbcType=VARCHAR},
+      </if>
+      <if test="zuoyong != null">
+        zuoyong = #{zuoyong,jdbcType=VARCHAR},
+      </if>
+      <if test="fuzuoyong != null">
+        fuzuoyong = #{fuzuoyong,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="baozhiqi != null">
+        baozhiqi = #{baozhiqi,jdbcType=VARCHAR},
+      </if>
+      <if test="shenchanriqi != null">
+        shenchanriqi = #{shenchanriqi,jdbcType=DATE},
+      </if>
+      <if test="company != null">
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="jixing != null">
+        jixing = #{jixing,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.shyroke.entity.Medical">
+    update medical
+    set name = #{name,jdbcType=VARCHAR},
+      chengfen = #{chengfen,jdbcType=VARCHAR},
+      yongfa = #{yongfa,jdbcType=VARCHAR},
+      zuoyong = #{zuoyong,jdbcType=VARCHAR},
+      fuzuoyong = #{fuzuoyong,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      baozhiqi = #{baozhiqi,jdbcType=VARCHAR},
+      shenchanriqi = #{shenchanriqi,jdbcType=DATE},
+      company = #{company,jdbcType=VARCHAR},
+      jixing = #{jixing,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select * from medical
+  </select>
+  
+  <select id="selectByName" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select * from medical 
+  	where name like "%"#{name}"%"
+  </select>
+  
+   <select id="selectByZuoYong" parameterType="java.lang.String" resultMap="BaseResultMap">
+  	select * from medical 
+  	where zuoyong like "%"#{zuoyong}"%"
+  </select>
+
+</mapper>
