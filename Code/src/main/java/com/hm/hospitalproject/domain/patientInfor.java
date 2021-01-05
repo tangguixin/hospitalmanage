@@ -3,6 +3,7 @@ package com.hm.hospitalproject.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import java.sql.Timestamp;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,90 +12,26 @@ import javax.persistence.Id;
  * @Date: 2021/01/02/15:48
  * @Description:
  */
-@Entity
-public class PatientInfor {
-    @Id
-    private int PCode;
-    @Column
-    private String PName;
-    @Column
-    private int  PID;
-    @Column
-    private String SEX;
-    @Column
-    private int AGE;
-    @Column
-    private String PHis;
-    @Column
-    private String PAd ;
-    @Column
-    private String  Pcheck;
-
-    public int getPCode() {
-        return PCode;
-    }
-
-    public void setPCode(int PCode) {
-        this.PCode = PCode;
-    }
-
-    public String getPName() {
-        return PName;
-    }
-
-    public void setPName(String PName) {
-        this.PName = PName;
-    }
-
-    public int getPID() {
-        return PID;
-    }
-
-    public void setPID(int PID) {
-        this.PID = PID;
-    }
-
-    public String getSEX() {
-        return SEX;
-    }
-
-    public void setSEX(String SEX) {
-        this.SEX = SEX;
-    }
-
-    public int getAGE() {
-        return AGE;
-    }
-
-    public void setAGE(int AGE) {
-        this.AGE = AGE;
-    }
-
-    public String getPHis() {
-        return PHis;
-    }
-
-    public void setPHis(String PHis) {
-        this.PHis = PHis;
-    }
-
-    public String getPAd() {
-        return PAd;
-    }
-
-    public void setPAd(String PAd) {
-        this.PAd = PAd;
-    }
-
-    public String getPcheck() {
-        return Pcheck;
-    }
-
-    public void setPcheck(String pcheck) {
-        Pcheck = pcheck;
-    }
-
-
+//患者基础信息表
+public class patientInfor {
+    //userid  主键
+    private Integer userId;
+    //身份证号
+    private int shenfenzheng;
+    //姓名
+    private String userName;
+    //user性别
+    private String userSex;
+    //user密码
+    private String userPassword;
+    //user手机
+    private String userPhone;
+    //user地址
+    private String userAddress;
+    //user状态(保留：如果需要对用户权限做处理)
+    private String status;
+    //user最后登录时间
+    private String lastLoginTime;
 
 
 
