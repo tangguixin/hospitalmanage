@@ -14,13 +14,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 public class TestController {
-    @RequestMapping("/test")
+    @RequestMapping("/hello")
     @ResponseBody
     public String test(){
-        return "Hello SpringBoot";
+        return "Hello SpringBoot 12dsdsds3";
     }
 
-    @RequestMapping(value = "/",method = RequestMethod.GET)
+    @RequestMapping(value = "/test",method = RequestMethod.GET)
     public String indexOf(){
         return "test";
     }

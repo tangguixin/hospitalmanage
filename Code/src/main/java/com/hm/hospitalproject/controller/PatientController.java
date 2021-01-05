@@ -19,6 +19,9 @@ public class PatientController {
     private static Logger log = LoggerFactory.getLogger(PatientController.class);
 
 
+    /**
+     * @return 跳转到病人操作页面
+     */
     @RequestMapping(value = "/patient",method = RequestMethod.GET)
     public String patien(){
         log.info("病人操作主页");

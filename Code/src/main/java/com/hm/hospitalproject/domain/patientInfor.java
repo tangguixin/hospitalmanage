@@ -17,7 +17,7 @@ public class patientInfor {
     //userid  主键
     private Integer userId;
     //身份证号
-    private int shenfenzheng;
+    private String shenfenzheng;
     //姓名
     private String userName;
     //user性别
@@ -32,9 +32,6 @@ public class patientInfor {
     private String status;
     //user最后登录时间
     private String lastLoginTime;
-
-
-
 
 
 }
