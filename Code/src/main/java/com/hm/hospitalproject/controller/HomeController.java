@@ -44,6 +44,17 @@ public class HomeController {
         return "登录成功";
     }
 
+    @ApiOperation(value = "用户退出",httpMethod = "GET")
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpSession session){
+        if (session.getAttribute("users")!=null){
+
+        }else if (true){
+
+        }
+        return "/login";
+    }
+
 
 
 }

@@ -7,6 +7,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Created with IntelliJ IDEA.
@@ -17,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 @Api(value = "患者界面",description = "患者页面请求Api")
+@RequestMapping(value = "patientAction")
 public class PatientController {
 
     private static Logger log = LoggerFactory.getLogger(PatientController.class);
@@ -32,14 +37,22 @@ public class PatientController {
         return "/patient";
     }
 
+
+
+
+    @ResponseBody
     @ApiOperation(value = "患者预约信息",httpMethod = "POST")
     @RequestMapping(value = "/patient/onlineorder",method = RequestMethod.POST)
-    public String onlineOrder(){
+    public String onlineOrder (HttpServletRequest response,
+                               @RequestParam(value = "doctorId",required = false) String doctorId,
+                               @RequestParam(value = "roomId",required = false) String roomId,
+                               @RequestParam(value = "type",required = true) String type){
         //解析 post传过来的参数
         //通过构建预约对象
         //操作repository传入数据库，并做业务逻辑
         //返回提前端（操作结果）
-        return "onlineOrder/orderInfo";
+        //通过表字段issuccess判断是否成功
+        return "success";
     }
 
 }
