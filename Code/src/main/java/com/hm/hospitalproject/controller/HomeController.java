@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -21,35 +22,34 @@ import javax.servlet.http.HttpSession;
 public class HomeController {
     private static Logger log = LoggerFactory.getLogger(PatientController.class);
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String indexOf(HttpServletRequest request, HttpSession session){
+    @ResponseBody
+    public String indexOf(HttpServletRequest request, HttpSession session) {
 
-        String shenfenzheng=request.getParameter("shenfenzheng");
-        String password=request.getParameter("password");
-        String type=request.getParameter("type");
-
+        String shenfenzheng = request.getParameter("shenfenzheng");
+        String password = request.getParameter("password");
+        String type = request.getParameter("type");
+        log.info("身份证" + shenfenzheng + "   " + "密码" + password);
         //repository通过参数返回user对象;
-        users user=new users();
+        users user = new users();
 
-        if (user!=null){
-            if (user.getType().equals("病人")){
-                session.setAttribute("patient",user);
-            }else if (user.getType().equals("")){
+        if (user != null) {
+            if (user.getType().equals("病人")) {
+                session.setAttribute("patient", user);
+            } else if (user.getType().equals("")) {
 
             }
-        }else {
+            //.......
+            String userJson = null;
+            return userJson;
+
+        } else {
 
             String errMsg = "{\"errMsg\":\"用户名或者密码错误\"}";
             return errMsg;
         }
-
-
-
-
-
-        log.info("身份证"+shenfenzheng+"   "+"密码"+password);
-        return "/ligin";
-
     }
 
 
 }
+
+
