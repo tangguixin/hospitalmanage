@@ -21,4 +21,10 @@ public class PharmacyController {
         log.info("药房界面");
         return "/pharmacy";
     }
+
+    //根据用户id查询处方接口
+    //将处方加入队列接口
+    //配药接口
+    //发药接口
+    //退药接口
 }

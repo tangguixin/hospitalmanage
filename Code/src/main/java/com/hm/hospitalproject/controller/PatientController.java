@@ -55,4 +55,13 @@ public class PatientController {
         return "success";
     }
 
+
+    //排队情况状态接口
+
+    //预约取消接口
+
+    //配药进度跟踪接口
+
+    //结算接口
+
 }

@@ -22,4 +22,8 @@ public class TriageController {
         log.info("分诊台界面 +加入排队队列");
         return "/triage";
     }
+
+    //根据用户id查询预约表接口
+
+    //根据用户id加入排队队列接口
 }
