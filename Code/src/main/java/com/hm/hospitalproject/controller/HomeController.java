@@ -44,7 +44,7 @@ public class HomeController {
 
         } else {
 
-            String errMsg = "{\"errMsg\":\"用户名或者密码错误\"}";
+            String errMsg = "{\"errMsg\":\"用户名或者密码错误！\"}";
             return errMsg;
         }
     }
