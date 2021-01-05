@@ -1,5 +1,9 @@
 package com.hm.hospitalproject.domain;
 
+import lombok.Data;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.sql.Date;
 import java.sql.Time;
@@ -13,27 +17,29 @@ import java.sql.Timestamp;
  * @Description:
  */
 //在线预约信息表
+
+@Data
+@Entity
 public class onlineGuahao {
-    //预约id  自增主键
+    @Id
     private int orderId;
-    //用户id
-    private int userid;    //用户表唯一标识符（外键）
-    //预约科室名称
+    @Column
+    private int userid;
+    @Column
     private String roomId;
-    //医生姓名
+    @Column
     private String doctorId;
-    //预约日期
-    private String transactDate;
-    //预约开始时间
-    private String transactbeginTime;
-    private String TransactendTime;
-    //是否成功
+    @Column
     private boolean isSuccess;
-    //是否取消
+    @Column
     private boolean isCancel;
-    //创建预约时间
+    @Column
     private Timestamp createTime;
 
-
+    /**
+     * 预约类型
+     */
+    @Column
+    private String type;
 
 }

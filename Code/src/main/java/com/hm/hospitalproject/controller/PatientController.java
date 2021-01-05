@@ -20,7 +20,7 @@ public class PatientController {
 
 
     /**
-     * @return 跳转到病人操作页面
+     * @return 跳转到病人操作主页面
      */
     @RequestMapping(value = "/patient",method = RequestMethod.GET)
     public String patien(){

@@ -1,5 +1,7 @@
 server:
-  port: 8080
+  port: 8082
+
+
 
 spring:
   datasource:
@@ -23,3 +25,5 @@ spring:
       port: 9527
     restart:
       enabled: true
+swagger:
+  enable: true
