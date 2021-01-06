@@ -35,4 +35,19 @@ public class HomeController {
         log.info("病人操作主页");
         return "/patient";
     }
+
+    @ApiOperation(value = "定位到分诊台界面",httpMethod = "GET")
+    @RequestMapping(value = "/triage")
+    public String triage(){
+        log.info("分诊台界面 +加入排队队列");
+        return "/triage";
+    }
+
+
+    @ApiOperation(value = "定位到药房",httpMethod = "GET")
+    @RequestMapping(value = "/pharmacy")
+    public String pharmacy(){
+        log.info("药房界面");
+        return "/pharmacy";
+    }
 }

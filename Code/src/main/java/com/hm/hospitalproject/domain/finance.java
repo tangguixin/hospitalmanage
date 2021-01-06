@@ -12,10 +12,14 @@ import java.sql.Timestamp;
  *
  * @Auther: 唐贵欣
  * @Date: 2021/01/05/11:32
- * @Description: 医院财务表(可能不用)
+ * @Description:
  */
-@Data
+
+//医院财务表(可能不用)
+
+
 @Entity
+@Data
 public class finance {
     @Id
     private Integer financeId;

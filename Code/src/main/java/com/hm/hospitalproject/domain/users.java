@@ -12,12 +12,11 @@ import java.sql.Timestamp;
  *
  * @Auther: 唐贵欣
  * @Date: 2021/01/05/17:56
- * @Description: 统一用户登录表
+ * @Description:
  */
 
-
-@Data
 @Entity
+@Data
 public class users {
     @Id
     private Integer id;

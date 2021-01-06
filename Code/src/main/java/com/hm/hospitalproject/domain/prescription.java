@@ -17,9 +17,8 @@ import java.util.Date;
  */
 
 //医生给病人开的处方表
-
-@Data
 @Entity
+@Data
 public class prescription {
     /**
      * 药单本身的自增ID，主键
@@ -49,7 +48,7 @@ public class prescription {
      * 药单对应的药品
      */
     @Column
-    private String  medicalName;
+    private Integer  drugid;
 
     @Column
     private Timestamp creatTime;

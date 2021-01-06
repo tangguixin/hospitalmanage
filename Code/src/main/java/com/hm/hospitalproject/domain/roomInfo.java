@@ -11,11 +11,11 @@ import javax.persistence.Id;
  *
  * @Auther: 唐贵欣
  * @Date: 2021/01/05/12:23
- * @Description: 科室信息
+ * @Description:
  */
 
-@Data
 @Entity
+@Data
 public class roomInfo {
 
     /**

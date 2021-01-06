@@ -30,11 +30,11 @@ public class Swagger2 {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 // 页面标题
-                .title("Spring Boot 测试使用 Swagger2 构建RESTful API")
+                .title("医院门诊管理系统 RESTful API")
                 // 版本号
-                .version("1.0")
+                .version("1.0.0")
                 // 描述
-                .description("API 描述")
+                .description("API接口 描述")
                 .build();
     }
 }

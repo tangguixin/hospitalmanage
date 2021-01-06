@@ -18,21 +18,28 @@ import java.sql.Timestamp;
  */
 //在线预约信息表
 
-@Data
 @Entity
+@Data
 public class onlineGuahao {
+    //预约id  自增主键
     @Id
     private int orderId;
+    //用户id
     @Column
-    private int userid;
+    private int userid;    //用户表唯一标识符（外键）
+    //预约科室名称
     @Column
     private String roomId;
+    //医生姓名
     @Column
     private String doctorId;
+    //是否成功
     @Column
     private boolean isSuccess;
+    //是否取消
     @Column
     private boolean isCancel;
+    //创建预约时间
     @Column
     private Timestamp createTime;
 
