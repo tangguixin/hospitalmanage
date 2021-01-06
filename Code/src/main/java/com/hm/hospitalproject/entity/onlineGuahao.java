@@ -1,47 +1,85 @@
 package com.hm.hospitalproject.entity;
 
-import lombok.Data;
+import java.util.Date;
 
+public class OnlineGuahao {
+    private Integer orderId;
 
-import java.sql.Timestamp;
-
-/**
- * Created with IntelliJ IDEA.
- *
- * @Auther: 唐贵欣
- * @Date: 2021/01/05/11:11
- * @Description:
- */
-//在线预约信息表
-
-
-@Data
-public class onlineGuahao {
-    //预约id  自增主键
-
-    private int orderId;
-    //用户id
-
-    private int userid;    //用户表唯一标识符（外键）
-
-    private String roomId;
-    //医生姓名
+    private Date createTime;
 
     private String doctorId;
-    //是否成功
 
-    private boolean isSuccess;
-    //是否取消
+    private Boolean isCancel;
 
-    private boolean isCancel;
-    //创建预约时间
+    private Boolean isSuccess;
 
-    private Timestamp createTime;
-
-    /**
-     * 预约类型
-     */
+    private String roomId;
 
     private String type;
 
+    private Integer userid;
+
+    public Integer getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(Integer orderId) {
+        this.orderId = orderId;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(String doctorId) {
+        this.doctorId = doctorId == null ? null : doctorId.trim();
+    }
+
+    public Boolean getIsCancel() {
+        return isCancel;
+    }
+
+    public void setIsCancel(Boolean isCancel) {
+        this.isCancel = isCancel;
+    }
+
+    public Boolean getIsSuccess() {
+        return isSuccess;
+    }
+
+    public void setIsSuccess(Boolean isSuccess) {
+        this.isSuccess = isSuccess;
+    }
+
+    public String getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(String roomId) {
+        this.roomId = roomId == null ? null : roomId.trim();
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
+    }
+
+    public Integer getUserid() {
+        return userid;
+    }
+
+    public void setUserid(Integer userid) {
+        this.userid = userid;
+    }
 }

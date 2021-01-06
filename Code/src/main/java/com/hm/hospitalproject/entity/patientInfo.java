@@ -1,47 +1,93 @@
 package com.hm.hospitalproject.entity;
 
-import lombok.Data;
-
-
-/**
- * Created with IntelliJ IDEA.
- *
- * @Auther: 唐贵欣
- * @Date: 2021/01/02/15:48
- * @Description:
- */
-//患者基础信息表
-
-
-@Data
-public class patientInfo {
-    //userid  主键
-
+public class PatientInfo {
     private Integer userId;
-    //身份证号
-
-    private String shenfenzheng;
-    //姓名
-
-    private String userName;
-    //user性别
-
-    private String userSex;
-    //user密码
-
-    private String userPassword;
-    //user手机
-
-    private String userPhone;
-    //user地址
-
-    private String userAddress;
-    //user状态(保留：如果需要对用户权限做处理)
-
-    private String status;
-    //user最后登录时间
 
     private String lastLoginTime;
 
+    private String shenfenzheng;
 
+    private String status;
+
+    private String userAddress;
+
+    private String userName;
+
+    private String userPassword;
+
+    private String userPhone;
+
+    private String userSex;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public String getLastLoginTime() {
+        return lastLoginTime;
+    }
+
+    public void setLastLoginTime(String lastLoginTime) {
+        this.lastLoginTime = lastLoginTime == null ? null : lastLoginTime.trim();
+    }
+
+    public String getShenfenzheng() {
+        return shenfenzheng;
+    }
+
+    public void setShenfenzheng(String shenfenzheng) {
+        this.shenfenzheng = shenfenzheng == null ? null : shenfenzheng.trim();
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status == null ? null : status.trim();
+    }
+
+    public String getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(String userAddress) {
+        this.userAddress = userAddress == null ? null : userAddress.trim();
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName == null ? null : userName.trim();
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword == null ? null : userPassword.trim();
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone == null ? null : userPhone.trim();
+    }
+
+    public String getUserSex() {
+        return userSex;
+    }
+
+    public void setUserSex(String userSex) {
+        this.userSex = userSex == null ? null : userSex.trim();
+    }
 }

@@ -1,30 +1,45 @@
 package com.hm.hospitalproject.entity;
 
-import lombok.Data;
+import java.util.Date;
 
-
-import java.sql.Timestamp;
-
-/**
- * Created with IntelliJ IDEA.
- *
- * @Auther: 唐贵欣
- * @Date: 2021/01/05/11:32
- * @Description:
- */
-
-//医院财务表(可能不用)
-
-
-
-@Data
-public class finance {
-
+public class Finance {
     private Integer financeId;
 
-    private Timestamp createTime;
+    private Double income;
 
-    private Double Income;
+    private Double outcome;
 
-    private Double Outcome;
+    private Date createTime;
+
+    public Integer getFinanceId() {
+        return financeId;
+    }
+
+    public void setFinanceId(Integer financeId) {
+        this.financeId = financeId;
+    }
+
+    public Double getIncome() {
+        return income;
+    }
+
+    public void setIncome(Double income) {
+        this.income = income;
+    }
+
+    public Double getOutcome() {
+        return outcome;
+    }
+
+    public void setOutcome(Double outcome) {
+        this.outcome = outcome;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
 }

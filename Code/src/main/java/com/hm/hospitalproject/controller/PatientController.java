@@ -1,10 +1,13 @@
 package com.hm.hospitalproject.controller;
 
+
+import com.hm.hospitalproject.entity.OnlineGuahao;
+import com.hm.hospitalproject.server.YuyueServer;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,29 +26,48 @@ public class PatientController {
 
     private static Logger log = LoggerFactory.getLogger(PatientController.class);
 
+    @Autowired
+    private YuyueServer yuyueServer;
+
 
     @ApiOperation(value = "上传患者预约信息",httpMethod = "POST")
     @RequestMapping(value = "/onlineorder",method = RequestMethod.POST)
     public String onlineOrder (HttpServletRequest response,
+                               int userId,
+                                       @RequestParam(value = "creattime",required = false) String creattime,
                                @RequestParam(value = "doctorId",required = false) String doctorId,
                                @RequestParam(value = "roomId",required = false) String roomId,
                                @RequestParam(value = "type",required = true) String type){
-        //解析 post传过来的参数
-        //通过构建预约对象
-        //操作repository传入数据库，并做业务逻辑
-        //返回提前端（操作结果）
-        //通过表字段issuccess判断是否成功
-        return "success";
+        OnlineGuahao onlineGuahao=new OnlineGuahao();
+        onlineGuahao.setDoctorId(doctorId);
+        onlineGuahao.setUserid(userId);
+        onlineGuahao.setType(type);
+        onlineGuahao.setRoomId(roomId);
+        if (yuyueServer.addyuyue(onlineGuahao)){
+            return "success";
+        }
+
+        return "index/index";
     }
 
 
 
 
+//    @ApiOperation(value = "分诊台挂号",httpMethod = "POST")
+//    @RequestMapping(value = "/fenzhenorder",method = RequestMethod.POST)
+//    public String onlineOrder (HttpServletRequest response, @RequestParam(value = "userid",required = false) String userid)
+//    {
+//
+//        生成排队号
+//
+//        return 分诊界面;
+//    }
+
     @ApiOperation(value = "病人取消预约接口",httpMethod = "POST")
     @RequestMapping(value = "/onlinecancel",method = RequestMethod.GET)
     public String onlinecancel (HttpServletRequest response,
-                               @RequestParam(value = "orderId",required = true) String orderId
-                              ){
+                                @RequestParam(value = "orderId",required = true) String orderId
+    ){
         //通过参数orderId去数据库操作
         return "success";
     }
@@ -56,7 +78,7 @@ public class PatientController {
     @ApiOperation(value = "用户结算接口",httpMethod = "POST")
     @RequestMapping(value = "/onlinePay",method = RequestMethod.GET)
     public String onlinepay (HttpServletRequest response,
-                               @RequestParam(value = "userId",required = true) String userId
+                             @RequestParam(value = "userId",required = true) String userId
     ){
 
 

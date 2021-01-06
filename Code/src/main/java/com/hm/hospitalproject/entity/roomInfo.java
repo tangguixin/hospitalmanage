@@ -1,38 +1,33 @@
 package com.hm.hospitalproject.entity;
 
-import lombok.Data;
-
-
-
-/**
- * Created with IntelliJ IDEA.
- *
- * @Auther: 唐贵欣
- * @Date: 2021/01/05/12:23
- * @Description:
- */
-
-
-@Data
-public class roomInfo {
-
-    /**
-     * 科室ID
-     */
-
+public class RoomInfo {
     private Integer roomId;
-    /**
-     * 科室名称
-     */
-
-    private String roomname;
-
-    /**
-     *描述
-     */
 
     private String description;
 
+    private String roomname;
+
+    public Integer getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(Integer roomId) {
+        this.roomId = roomId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description == null ? null : description.trim();
+    }
+
+    public String getRoomname() {
+        return roomname;
+    }
+
+    public void setRoomname(String roomname) {
+        this.roomname = roomname == null ? null : roomname.trim();
+    }
 }
-
-

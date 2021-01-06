@@ -3,41 +3,55 @@ package com.hm.hospitalproject.entity;
 
 import lombok.Data;
 
-
-
-/**
- * 医生(或者科室)对应的可预约的时间段,以及时间段对应的剩余的可预约的人数
- */
-
 @Data
-public class AppointmentScheduleDO {
-    /**
-     * 医生名字
-     */
-
+public class AppointmentScheduledo {
     private String doctorName;
-
-    /**
-     * 科室ID
-     */
-
-    private String roomID;
-
-    /**
-     * 可预约时间的开始时间
-     */
-
-    private String startTime;
-
-    /**
-     * 可预约时间的结束时间
-     */
 
     private String endTime;
 
-    /**
-     * 可预约的剩余人数
-     */
+    private Integer leftPeople;
 
-    private int leftPeople;
+    private String roomid;
+
+    private String startTime;
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName == null ? null : doctorName.trim();
+    }
+
+    public String getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime) {
+        this.endTime = endTime == null ? null : endTime.trim();
+    }
+
+    public Integer getLeftPeople() {
+        return leftPeople;
+    }
+
+    public void setLeftPeople(Integer leftPeople) {
+        this.leftPeople = leftPeople;
+    }
+
+    public String getRoomid() {
+        return roomid;
+    }
+
+    public void setRoomid(String roomid) {
+        this.roomid = roomid == null ? null : roomid.trim();
+    }
+
+    public String getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(String startTime) {
+        this.startTime = startTime == null ? null : startTime.trim();
+    }
 }

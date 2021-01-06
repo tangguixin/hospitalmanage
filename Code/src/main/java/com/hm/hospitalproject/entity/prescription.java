@@ -1,58 +1,75 @@
 package com.hm.hospitalproject.entity;
 
-import lombok.Data;
-
-import java.sql.Timestamp;
 import java.util.Date;
 
-/**
- * Created with IntelliJ IDEA.
- *
- * @Auther: 唐贵欣
- * @Date: 2021/01/05/11:24
- * @Description:
- */
-
-//医生给病人开的处方表
-
-@Data
-public class prescription {
-    /**
-     * 药单本身的自增ID，主键
-     */
-
+public class Prescription {
     private Integer id;
 
-    /**
-     * 药单对应的患者名
-     */
-
-    private Integer patientId;
-
-    /**
-     * 开具药单的医生
-     */
+    private Date creatTime;
 
     private Integer doctorId;
 
-    /**
-     * 开具药单的时间
-     */
+    private Integer drugid;
 
-    private Date gmt_create;
+    private Date gmtCreate;
 
-    /**
-     * 药单对应的药品
-     */
+    private Boolean jiesuan;
 
-    private Integer  drugid;
+    private Integer patientId;
 
+    public Integer getId() {
+        return id;
+    }
 
-    private Timestamp creatTime;
-    /**
-     * 药单是否使用(取出药)
-     */
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-    private boolean  jiesuan;
+    public Date getCreatTime() {
+        return creatTime;
+    }
 
+    public void setCreatTime(Date creatTime) {
+        this.creatTime = creatTime;
+    }
+
+    public Integer getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(Integer doctorId) {
+        this.doctorId = doctorId;
+    }
+
+    public Integer getDrugid() {
+        return drugid;
+    }
+
+    public void setDrugid(Integer drugid) {
+        this.drugid = drugid;
+    }
+
+    public Date getGmtCreate() {
+        return gmtCreate;
+    }
+
+    public void setGmtCreate(Date gmtCreate) {
+        this.gmtCreate = gmtCreate;
+    }
+
+    public Boolean getJiesuan() {
+        return jiesuan;
+    }
+
+    public void setJiesuan(Boolean jiesuan) {
+        this.jiesuan = jiesuan;
+    }
+
+    public Integer getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(Integer patientId) {
+        this.patientId = patientId;
+    }
 }

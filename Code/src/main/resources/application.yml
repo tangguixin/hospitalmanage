@@ -9,11 +9,15 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: TGX731875920
+  mvc:
 
 
     hikari:
       maximum-pool-size: 20
       minimum-idle: 5
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
 
 
   devtools:
@@ -27,17 +31,13 @@ swagger:
 
 
 
-ybatis-plus:
-  configuration:
-    map-underscore-to-camel-case: true
-    auto-mapping-behavior: full
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-  mapper-locations: classpath*:mapper/**/*Mapper.xml
-  global-config:
-    # 逻辑删除配置
-    db-config:
-      # 删除前
-      logic-not-delete-value: 1
-      # 删除后
-      logic-delete-value: 0
+mybatis:
+  mapper-locations: classpath:mapper/*Mapper.xml
+  type-aliases-package: com.hm.hospitalproject.entity
 
+#showSql
+logging:
+  level:
+    com:
+      example:
+        mapper : debug

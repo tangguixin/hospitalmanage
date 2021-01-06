@@ -1,34 +1,55 @@
 package com.hm.hospitalproject.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import java.util.Date;
 
-
-import java.sql.Timestamp;
-
-/**
- * Created with IntelliJ IDEA.
- *
- * @Auther: 唐贵欣
- * @Date: 2021/01/05/17:56
- * @Description:
- */
-
-
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
-public class users {
-
+public class Users {
     private Integer id;
 
-    private String shenfenzheng;
+    private Date createTime;
 
     private String password;
 
+    private String shenfenzheng;
+
     private String type;
 
-    private Timestamp createTime;
+    public Integer getId() {
+        return id;
+    }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password == null ? null : password.trim();
+    }
+
+    public String getShenfenzheng() {
+        return shenfenzheng;
+    }
+
+    public void setShenfenzheng(String shenfenzheng) {
+        this.shenfenzheng = shenfenzheng == null ? null : shenfenzheng.trim();
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type == null ? null : type.trim();
+    }
 }
