@@ -25,5 +25,10 @@
  静态资源目录：resources/static/  
  视图模板目录：resources/templates/
 
+
+##  查看接口文档
+
+1. 运行工程
+2. 浏览器输入 http://localhost:8082/swagger-ui.html#/doc-controller
     
 
