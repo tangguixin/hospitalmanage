@@ -1,14 +1,17 @@
 package com.hm.hospitalproject.controller;
 
-import com.hm.hospitalproject.domain.doctorInfo;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,37 +22,40 @@ import java.util.List;
  */
 
 
-@Controller
+@RestController
 @RequestMapping(value ="doctorAction")
+@Api(value = "对医生的所有操作",description = "获取医生信息，添加病历单，开检验单...等接口")
 public class DocController {
     private static Logger log = LoggerFactory.getLogger(PatientController.class);
 
 
 
 
-    @RequestMapping(value = "/doctor")
-    public String doctor(){
-        log.info("医生界面");
-        return "/doctor";
+    @RequestMapping(value = "/getAlldoctors",method = RequestMethod.GET)
+    @ApiOperation(value = "获取所有的医生的列表",httpMethod = "GET")
+    public String getAlldoctors(){
+
+        return "这里应该返回所有医生的list";
     }
 
 
-//获取医生列表
-    @RequestMapping(value = "getAllDctor")
-    @ResponseBody
-    public List<doctor> getAllDctor(){
-    }
-
-
-    /**
-     * @return 根据部门名称获取医生列表
-     */
-    @RequestMapping(value = "getDctorByroom")
-    @ResponseBody
-    public List<doctor> getAllDctor(){
+    @RequestMapping(value = "/getdoctorsByroom",method = RequestMethod.GET)
+    @ApiOperation(value = "根据部门信息获取医生列表",httpMethod = "GET")
+    public String getdoctorsByroom(HttpServletRequest response,
+                        @RequestParam(value ="room",required = true) String room){
+        return "这里应该根据部门名返回医生List";
     }
 
     //给病人添加检验单接口
+    @RequestMapping(value = "/addchecklist",method = RequestMethod.POST)
+    @ApiOperation(value = "给病人添加检验单接口",httpMethod = "POST")
+    public String addchecklist(HttpServletRequest response,
+                                   @RequestParam(value ="patientId",required = true) String patientId,
+                               @RequestParam(value ="doctorId",required = true) String doctorId
+            ){
+        return "这里应该返回所有医生的list";
+    }
+
 
     //通过用户id将用户从队列中拿出来的接口
 

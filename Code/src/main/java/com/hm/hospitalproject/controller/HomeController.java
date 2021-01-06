@@ -1,62 +1,38 @@
 package com.hm.hospitalproject.controller;
 
-import com.hm.hospitalproject.domain.users;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * Created with IntelliJ IDEA.
  *
  * @Auther: 唐贵欣
- * @Date: 2021/01/05/9:08
+ * @Date: 2021/01/06/8:56
  * @Description:
  */
-@Controller
-@Api(value = "登录系统",description = "登录页面请求Api")
-public class HomeController {
 
+
+@Api(value = "页面路径映射",description = "定位基础页面路径")
+public class HomeController {
     private static Logger log = LoggerFactory.getLogger(PatientController.class);
 
-    @ApiOperation(value = "登录页面",httpMethod = "GET")
+    @ApiOperation(value = "定位到登录页面",httpMethod = "GET")
     @RequestMapping(value = "/",method = RequestMethod.GET)
     public String login1() {
         return "/login";
     }
 
-
-
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    @ResponseBody
-    @ApiOperation(value = "登录接口，成功后获取cookies",httpMethod = "POST")
-    public String login(HttpServletRequest response,
-                          @RequestParam(value ="shenfenzheng",required = true) String shenfenzheng,
-                          @RequestParam(value = "password", required = true) String password,
-                             @RequestParam(value = "type", required = true) String type,HttpSession session){
-        session.setAttribute("name","12212");
-
-        return "登录成功";
+    /**
+     * @return 跳转到病人操作主页面
+     */
+    @ApiOperation(value = "定位到患者界面",httpMethod = "GET")
+    @RequestMapping(value = "/patient",method = RequestMethod.GET)
+    public String patien(){
+        log.info("病人操作主页");
+        return "/patient";
     }
-
-    @ApiOperation(value = "用户退出",httpMethod = "GET")
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(HttpSession session){
-        if (session.getAttribute("users")!=null){
-
-        }else if (true){
-
-        }
-        return "/login";
-    }
-
-
-
 }
-
-

@@ -5,10 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Date: 2021/01/05/9:09
  * @Description:患者操作界面
  */
-@Controller
+@RestController
 @Api(value = "患者界面",description = "患者页面请求Api")
 @RequestMapping(value = "patientAction")
 public class PatientController {
@@ -27,22 +24,8 @@ public class PatientController {
     private static Logger log = LoggerFactory.getLogger(PatientController.class);
 
 
-    /**
-     * @return 跳转到病人操作主页面
-     */
-    @ApiOperation(value = "定位到患者界面",httpMethod = "GET")
-    @RequestMapping(value = "/patient",method = RequestMethod.GET)
-    public String patien(){
-        log.info("病人操作主页");
-        return "/patient";
-    }
-
-
-
-
-    @ResponseBody
-    @ApiOperation(value = "患者预约信息",httpMethod = "POST")
-    @RequestMapping(value = "/patient/onlineorder",method = RequestMethod.POST)
+    @ApiOperation(value = "上传患者预约信息",httpMethod = "POST")
+    @RequestMapping(value = "/onlineorder",method = RequestMethod.POST)
     public String onlineOrder (HttpServletRequest response,
                                @RequestParam(value = "doctorId",required = false) String doctorId,
                                @RequestParam(value = "roomId",required = false) String roomId,
@@ -56,12 +39,29 @@ public class PatientController {
     }
 
 
-    //排队情况状态接口
 
-    //预约取消接口
 
-    //配药进度跟踪接口
+    @ApiOperation(value = "病人取消预约接口",httpMethod = "POST")
+    @RequestMapping(value = "/onlinecancel",method = RequestMethod.GET)
+    public String onlinecancel (HttpServletRequest response,
+                               @RequestParam(value = "orderId",required = true) String orderId
+                              ){
+        //通过参数orderId去数据库操作
+        return "success";
+    }
 
     //结算接口
+
+
+    @ApiOperation(value = "用户结算接口",httpMethod = "POST")
+    @RequestMapping(value = "/onlinePay",method = RequestMethod.GET)
+    public String onlinepay (HttpServletRequest response,
+                               @RequestParam(value = "userId",required = true) String userId
+    ){
+
+
+        //通过传入参数userId去数据库操作 也可以后端直接通过session
+        return "success";
+    }
 
 }
