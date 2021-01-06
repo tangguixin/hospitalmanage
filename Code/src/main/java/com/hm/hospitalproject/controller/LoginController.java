@@ -1,15 +1,19 @@
 package com.hm.hospitalproject.controller;
 
-import com.hm.hospitalproject.domain.users;
+import com.hm.hospitalproject.entity.doctorInfo;
+import com.hm.hospitalproject.entity.users;
+import com.hm.hospitalproject.server.UserServer;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,6 +30,12 @@ public class LoginController {
     private static Logger log = LoggerFactory.getLogger(PatientController.class);
 
 
+    private doctorInfo  doctorInfo;
+
+    @Autowired
+    private UserServer userServer;
+
+
 
     @RequestMapping(value = "/login",method = RequestMethod.POST)
     @ResponseBody
@@ -36,6 +46,8 @@ public class LoginController {
                              @RequestParam(value = "type", required = true) String type,HttpSession session){
         session.setAttribute("name","12212");
 
+       List<users> docs=userServer.getAlluser();
+       System.out.println(docs);
         return "登录成功";
     }
 

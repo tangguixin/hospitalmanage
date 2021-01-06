@@ -1,10 +1,10 @@
-package com.hm.hospitalproject.domain;
+package com.hm.hospitalproject.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
 import java.sql.Timestamp;
 
 /**
@@ -15,18 +15,20 @@ import java.sql.Timestamp;
  * @Description:
  */
 
-@Entity
+
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class users {
-    @Id
+
     private Integer id;
-    @Column
+
     private String shenfenzheng;
-    @Column
+
     private String password;
-    @Column
+
     private String type;
-    @Column
+
     private Timestamp createTime;
 
 }

@@ -1,10 +1,8 @@
-package com.hm.hospitalproject.domain;
+package com.hm.hospitalproject.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
 import java.sql.Timestamp;
 
 /**
@@ -18,15 +16,15 @@ import java.sql.Timestamp;
 //医院财务表(可能不用)
 
 
-@Entity
+
 @Data
 public class finance {
-    @Id
+
     private Integer financeId;
-    @Column
+
     private Timestamp createTime;
-    @Column
+
     private Double Income;
-    @Column
+
     private Double Outcome;
 }

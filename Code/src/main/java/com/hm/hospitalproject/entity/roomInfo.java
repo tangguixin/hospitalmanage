@@ -1,10 +1,8 @@
-package com.hm.hospitalproject.domain;
+package com.hm.hospitalproject.entity;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,25 +12,25 @@ import javax.persistence.Id;
  * @Description:
  */
 
-@Entity
+
 @Data
 public class roomInfo {
 
     /**
      * 科室ID
      */
-    @Id
+
     private Integer roomId;
     /**
      * 科室名称
      */
-    @Column
+
     private String roomname;
 
     /**
      *描述
      */
-    @Column
+
     private String description;
 
 }
