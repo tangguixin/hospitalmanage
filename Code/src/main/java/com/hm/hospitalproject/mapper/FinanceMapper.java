@@ -1,17 +1,11 @@
 package com.hm.hospitalproject.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hm.hospitalproject.entity.Finance;
+import org.springframework.stereotype.Repository;
 
-public interface FinanceMapper {
-    int deleteByPrimaryKey(Integer financeId);
 
-    int insert(Finance record);
+@Repository
+public interface FinanceMapper  extends BaseMapper<Finance> {
 
-    int insertSelective(Finance record);
-
-    Finance selectByPrimaryKey(Integer financeId);
-
-    int updateByPrimaryKeySelective(Finance record);
-
-    int updateByPrimaryKey(Finance record);
 }

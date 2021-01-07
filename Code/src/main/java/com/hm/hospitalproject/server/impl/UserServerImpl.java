@@ -1,11 +1,14 @@
 package com.hm.hospitalproject.server.impl;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.hm.hospitalproject.entity.Users;
 import com.hm.hospitalproject.mapper.UsersMapper;
 import com.hm.hospitalproject.server.UserServer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,7 +18,7 @@ import org.springframework.stereotype.Component;
  * @Description:
  */
 
-@Component
+@Service
 public class UserServerImpl implements UserServer {
 
 
@@ -25,7 +28,12 @@ public class UserServerImpl implements UserServer {
 
     @Override
     public Boolean login(String shenfenzheng, String password, String type) {
-        return false;
+//        Users on=new Users();
+//        on=userMapper.selectById(1);
+//        if (on.getPassword().equals(password)&&on.getType().equals(type)){
+//            return true;
+//        }
+        return true;
     }
 
     @Override
@@ -34,11 +42,9 @@ public class UserServerImpl implements UserServer {
     }
 
     @Override
-    public int test() {
-        Users users=new Users();
-        users.setId(2);
-        users.setShenfenzheng("500235199710097231");
-        users.setPassword("123456");
-        return userMapper.insert(users);
+    public Users test() {
+
+        return (Users) userMapper.selectById(1);
+
     }
 }

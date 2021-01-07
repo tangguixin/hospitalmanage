@@ -13,7 +13,8 @@ import java.util.List;
  * @Description:
  */
 
-@Service
+
+
 public interface DrusServer {
 
     List<Drugs> getAllDrus();

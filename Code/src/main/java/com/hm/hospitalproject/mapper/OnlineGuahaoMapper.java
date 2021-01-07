@@ -1,17 +1,10 @@
 package com.hm.hospitalproject.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hm.hospitalproject.entity.OnlineGuahao;
+import org.springframework.stereotype.Repository;
 
-public interface OnlineGuahaoMapper {
-    int deleteByPrimaryKey(Integer orderId);
+@Repository
+public interface OnlineGuahaoMapper  extends BaseMapper<OnlineGuahao> {
 
-    int insert(OnlineGuahao record);
-
-    int insertSelective(OnlineGuahao record);
-
-    OnlineGuahao selectByPrimaryKey(Integer orderId);
-
-    int updateByPrimaryKeySelective(OnlineGuahao record);
-
-    int updateByPrimaryKey(OnlineGuahao record);
 }

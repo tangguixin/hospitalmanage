@@ -12,10 +12,14 @@ import java.util.List;
  * @Date: 2021/01/07/1:07
  * @Description:
  */
-@Service
-public interface RoomServer {
+
+
+
+
+
+public interface office {
     List<RoomInfo> getAllroos();
-    RoomInfo   findroomByid(int id);
+    RoomInfo  findroomByid(int id);
 
 
 

@@ -1,17 +1,13 @@
 package com.hm.hospitalproject.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hm.hospitalproject.entity.CheckIterm;
+import org.springframework.stereotype.Repository;
 
-public interface CheckItermMapper {
-    int deleteByPrimaryKey(Integer id);
+/**
+ * @author TGX
+ */
+@Repository
+public interface CheckItermMapper  extends BaseMapper<CheckIterm> {
 
-    int insert(CheckIterm record);
-
-    int insertSelective(CheckIterm record);
-
-    CheckIterm selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(CheckIterm record);
-
-    int updateByPrimaryKey(CheckIterm record);
 }

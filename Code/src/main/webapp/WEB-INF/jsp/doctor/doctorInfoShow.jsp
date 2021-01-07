@@ -59,6 +59,9 @@
 						<p class="text-left">
 							<font color="#eb6864">医生科室：</font>${doctor.officesName }
 						</p>
+						<p class="text-left">
+							<font color="#eb6864">医生科室：</font>${userInfo.userId }
+						</p>
 					</div>
 				</div>
 				<hr />
@@ -73,12 +76,10 @@
 							<form class="form-search form-horizontal" id="orderInfo"
 								action="<c:url value='/order' />" method="post">
 								<input type="hidden" id="orderInfoValue" name="orderInfoValue" value=""/>
-								<input type="hidden" id="hospitalName" name="hospitalName" value="${doctor.hospitalName }"/>
-								<input type="hidden" id="officesName" name="officesName" value="${doctor.officesName }"/>
-								<input type="hidden" id="doctorName" name="doctorName" value="${doctor.doctorName }"/>
-								<input type="hidden" id="userIdenf" name="userIdenf" value="${userInfo.userIdenf }"/>
-								<input type="hidden" id="userEmail" name="userEmail" value="${userInfo.userEmail }"/>
-								<input type="hidden" id="doctorImg" name="doctorImg" value="${doctor.doctorImg }"/>
+								<input type="hidden" id="userId" name="userId" value="${userInfo.userId }"/>
+								<input type="hidden" id="doctorId" name="doctorId" value="${doctor.doctorId }"/>
+								<input type="hidden" id="roomId" name="roomId" value="${office.roomId }"/>
+								<input type="hidden" id="type" name="type" value="科室预约"/>
 								</form>
 								<div class="a" style="width: 800px;">
 								</div>

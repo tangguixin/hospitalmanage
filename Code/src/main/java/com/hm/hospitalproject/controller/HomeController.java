@@ -1,18 +1,24 @@
 package com.hm.hospitalproject.controller;
 
+import com.hm.hospitalproject.entity.OnlineGuahao;
 import com.hm.hospitalproject.entity.PatientInfo;
+import com.hm.hospitalproject.server.YuyueServer;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -23,16 +29,51 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 @Api(value = "页面路径映射",description = "定位基础页面路径")
-@RequestMapping(value = "/")
 public class HomeController {
+    private YuyueServer yuyueServer;
 
     private static Logger log = LoggerFactory.getLogger(PatientController.class);
 
+    @ApiOperation(value = "定位首页",httpMethod = "GET")
+    @RequestMapping(value = "/index",method = RequestMethod.GET)
+    public String index() {
+        return "index/index";
+    }
+
+    @ApiOperation(value = "定位首页",httpMethod = "POST")
+    @RequestMapping(value = "/index1",method = RequestMethod.POST)
+    public String index1() {
+        return "index/index";
+    }
+
+
+
     @ApiOperation(value = "定位到登录页面",httpMethod = "GET")
-    @RequestMapping(value = "/",method = RequestMethod.GET)
-    public String login1() {
+    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    public String login(HttpSession session) {
         return "user/login";
     }
+
+
+    @GetMapping(value = "/fenzhenlojin")
+    public String fenzhenlogin(){
+        return "user/fenzhenlogin";
+    }
+
+    @GetMapping(value = "/officeindex")
+    public String officeindex(){
+        return "office/officeIndedx";
+    }
+
+
+
+    @GetMapping(value = "/doctorIndex")
+    public String doctorindex(){
+        return "doctor/doctorIndex";
+    }
+
+
+
 
     /**
      * @return 跳转到病人操作主页面
@@ -46,27 +87,34 @@ public class HomeController {
             //根据id返回患者所有预约表
             //        根据id返回患者排队号
            // 根据id返回患者所有处方单
-            return "userCenter/userCenter";
+
+
+
+    //     List<OnlineGuahao> onlineGuahao= yuyueServer.getyuyue(patient.getUserId());
+
+            List<OnlineGuahao> list = new ArrayList<>();
+            list.add(new OnlineGuahao(1,new Date(12,12,12),"12",false,false,"1","专家",1));
+            list.add(new OnlineGuahao(2,new Date(12,12,12),"12",false,false,"1","" +
+                    "152",1));
+            list.add(new OnlineGuahao(1,new Date(4,12,12),"12",false,false,"1","专家",1));
+
+            model.addAttribute("list",list);
+            model.addAttribute("commonUser",patient);
+            //model添加patient字段为commonUser
+            //model添加排队好字段为waitinfo
+            //model添加处方表字段为chufang
+            return "/userCenter/userCenter";
         }
-        return "index/index";
+        return "/index/login";
     }
 
-    @ApiOperation(value = "定位到分诊台界面",httpMethod = "POST")
-    @RequestMapping(value = "/doctorlogin", method = RequestMethod.POST)
-    public String doctorlogin(Model model, String userPassword,HttpSession session,
-                              HttpServletRequest request) {
-        String error = "";
-        if (userPassword.equals("123456")) {
-           // 返回所有预约表信息
-            return "分诊界面";
-        }
-        else {
-            error = "密码错误";
-            log.info(error);
-            model.addAttribute("error", error);
-            return "user/doctorlogin";
-        }
 
+
+
+    @ApiOperation(value = "定位到分诊台界面",httpMethod = "GET")
+    @RequestMapping(value = "/fenzhenlogin", method = RequestMethod.GET)
+    public String fenzhenlogin1() {
+        return "/user/fenzhenlogin";
     }
 
 

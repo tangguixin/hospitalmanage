@@ -9,8 +9,8 @@
 			<li class="sidebar-brand"><a href="#"> </a></li>
 			<br>
 			<li><a class="navbar-brand" href="<c:url value="/index" />"><font color="#fff">首页</font></a></li>
-			<li><a class="navbar-brand" href="<c:url value="/officeIndex/1" />"><font color="#fff">科室挂号</font></a></li>
-			<li><a class="navbar-brand" href="<c:url value="/doctorIndex/1" />"><font color="#fff">专家挂号</font></a></li>
+			<li><a class="navbar-brand" href="<c:url value="/doctorIndex" />"><font color="#fff">专家挂号</font></a></li>
+			<li><a class="navbar-brand" href="<c:url value="/officeIndex" />"><font color="#fff">科室挂号</font></a></li>
 			<br />
 		</ul>
 	</div>

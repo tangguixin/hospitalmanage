@@ -1,7 +1,6 @@
 package com.hm.hospitalproject.server;
 
 import com.hm.hospitalproject.entity.CaseRecoder;
-import com.hm.hospitalproject.entity.DoctorInfo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,11 +13,11 @@ import java.util.List;
  * @Description:
  */
 
-@Service
-public interface CaserecoderServer {
-    Boolean addcaserecoder(CaseRecoder caseRecoder);
 
-    List<CaseRecoder> getAllcas();
+public interface CaserecoderServer {
+    int addcaserecoder(CaseRecoder caseRecoder);
+
+    List<CaseRecoder> getAllcas(int patientId);
     List<CaseRecoder> getpagecas(int start,int size);
 
     CaseRecoder getcaseBycaseId(int id);

@@ -34,18 +34,12 @@
 				</ul>
 				<hr />
 				<div class="col-md-12">
-					<div class="col-md-3">
-						<img alt="请检查网络，图片加载出现了一点小问题" src="${hos.hospitalImg }">
-					</div>
 					<div class="col-md-4">
 						<p class="text-left">
-							<font color="#eb6864">医院名称：</font>${hos.hospitalName }
+							<font color="#eb6864">医院名称：</font>XX医院
 						</p>
 						<p class="text-left">
-							<font color="#eb6864">科室名称：</font>${office.officesName  }
-						</p>
-						<p class="text-left">
-							<font color="#eb6864">医生数量：</font>${office.doctorNum }
+							<font color="#eb6864">科室名称：</font>${office.roomname  }
 						</p>
 					</div>
 				</div>
@@ -67,17 +61,14 @@
 									<th>科室医生</th>
 									<th>医生姓名</th>
 									<th>医生性别</th>
-									<th>医生职称</th>
 								</tr>
 							</thead>
 							<tbody>
 								<c:forEach var="doc" items="${doctor }" varStatus="status">
 									<tr>
 										<td>${ status.index + 1}</td>
-										<td><a href="<c:url value='/doctorInfoShow/${doc.id}' />">${doc.doctorName }</a></td>
+										<td><a href="<c:url value='/doctorInfoShow/${doc.doctorId}' />">${doc.doctorName }</a></td>
 										<td>${doc.doctorSex }</td>
-										<td>${doc.doctorTitle }</td>
-
 									</tr>
 								</c:forEach>
 							</tbody>

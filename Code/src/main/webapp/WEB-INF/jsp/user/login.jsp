@@ -49,16 +49,16 @@ input:-webkit-autofill {
 							<form role="form" action="login" method="post" class="login-form">
 								<div class="form-group col-xs-12">
 									<label class="sr-only" for="userIdenf">身份证号</label>身份证号(*):<input
-										type="text" name="userIdenf" class="form-username form-control"
-										id="userIdenf" required style="font-weight: bold"
-										onkeyup="isCheckIdenf()" /><span id="idenfTip"></span>
+										type="text" name="userIdenf" class=" form-control"
+										id="userIdenf"  style="font-weight: bold"
+										 />
 								</div>
 								<div class="form-group col-xs-12">
 									<!-- 输入密码-->
 									<label class="sr-only" for="userPassword">Password</label>密码(*):
-									<input type="password" name="userPassword" placeholder="用户密码"
-										class="form-password form-control" id="userPassword"
-										style="font-weight: bold" required onkeyup="isClearTip()">
+									<input type="password" name="userPassword"
+										class=" form-control" id="userPassword"
+										style="font-weight: bold" >
 								</div>
 								<div class="form-group col-xs-12">
 									身份(*): <select class="form-control input-control "

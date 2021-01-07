@@ -1,17 +1,14 @@
 package com.hm.hospitalproject.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hm.hospitalproject.entity.CaseRecoder;
+import org.springframework.stereotype.Repository;
 
-public interface CaseRecoderMapper {
-    int deleteByPrimaryKey(Integer caseId);
 
-    int insert(CaseRecoder record);
+/**
+ * @author TGX
+ */
+@Repository
+public interface CaseRecoderMapper extends BaseMapper<CaseRecoder> {
 
-    int insertSelective(CaseRecoder record);
-
-    CaseRecoder selectByPrimaryKey(Integer caseId);
-
-    int updateByPrimaryKeySelective(CaseRecoder record);
-
-    int updateByPrimaryKey(CaseRecoder record);
 }

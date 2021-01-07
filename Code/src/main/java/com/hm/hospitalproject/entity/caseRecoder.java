@@ -1,8 +1,15 @@
 package com.hm.hospitalproject.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
+import lombok.Data;
+
 import java.util.Date;
 
+
+@Data
 public class CaseRecoder {
+
     private Integer caseId;
 
     private Date creatTime;
@@ -17,59 +24,4 @@ public class CaseRecoder {
 
     private String zhusu;
 
-    public Integer getCaseId() {
-        return caseId;
-    }
-
-    public void setCaseId(Integer caseId) {
-        this.caseId = caseId;
-    }
-
-    public Date getCreatTime() {
-        return creatTime;
-    }
-
-    public void setCreatTime(Date creatTime) {
-        this.creatTime = creatTime;
-    }
-
-    public Integer getDoctorId() {
-        return doctorId;
-    }
-
-    public void setDoctorId(Integer doctorId) {
-        this.doctorId = doctorId;
-    }
-
-    public String getJiazhushi() {
-        return jiazhushi;
-    }
-
-    public void setJiazhushi(String jiazhushi) {
-        this.jiazhushi = jiazhushi == null ? null : jiazhushi.trim();
-    }
-
-    public Integer getPatientsId() {
-        return patientsId;
-    }
-
-    public void setPatientsId(Integer patientsId) {
-        this.patientsId = patientsId;
-    }
-
-    public String getXianbingshi() {
-        return xianbingshi;
-    }
-
-    public void setXianbingshi(String xianbingshi) {
-        this.xianbingshi = xianbingshi == null ? null : xianbingshi.trim();
-    }
-
-    public String getZhusu() {
-        return zhusu;
-    }
-
-    public void setZhusu(String zhusu) {
-        this.zhusu = zhusu == null ? null : zhusu.trim();
-    }
 }

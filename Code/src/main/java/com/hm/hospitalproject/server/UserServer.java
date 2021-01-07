@@ -1,5 +1,6 @@
 package com.hm.hospitalproject.server;
 
+import com.hm.hospitalproject.entity.Users;
 import org.springframework.stereotype.Service;
 
 /**
@@ -11,7 +12,8 @@ import org.springframework.stereotype.Service;
  */
 
 
-@Service
+
+
 public interface UserServer {
 
     /**
@@ -30,6 +32,6 @@ public interface UserServer {
      */
     public Boolean clearVerification(String shenfenzheng);
 
-    public int test();
+    Users test();
 
 }

@@ -1,5 +1,8 @@
 package com.hm.hospitalproject.entity;
 
+import lombok.Data;
+
+@Data
 public class InspectionItems {
     private Integer checkId;
 

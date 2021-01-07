@@ -47,7 +47,7 @@
 
                     <div class="form-bottom">
                         <!-- 验证医生信息的函数，正确则去往门诊处理界面-->
-                        <form role="form" action="fenzhenlogin" method="post" class="login-form">
+                        <form role="form" action="fenzhenlogin1" method="post" class="login-form">
                             <div class="form-group col-xs-12">
                                 <!-- 输入密码-->
                                 <label class="sr-only" for="userPassword">Password</label>密码(*):

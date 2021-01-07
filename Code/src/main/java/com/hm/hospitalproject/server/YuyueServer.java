@@ -2,7 +2,10 @@ package com.hm.hospitalproject.server;
 
 
 import com.hm.hospitalproject.entity.OnlineGuahao;
+import com.hm.hospitalproject.entity.PatientInfo;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,7 +15,16 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 
-@Service
+
+
+
 public interface YuyueServer {
     Boolean addyuyue(OnlineGuahao onlineGuahao);
+
+    Boolean cancelyuyue(int userId);
+
+    List<OnlineGuahao> getyuyue(int userId);
+    List<OnlineGuahao> getyuyueAll();
+
+
 }

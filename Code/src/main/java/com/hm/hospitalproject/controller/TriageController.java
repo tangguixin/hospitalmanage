@@ -1,16 +1,18 @@
 package com.hm.hospitalproject.controller;
 
+import com.hm.hospitalproject.entity.OnlineGuahao;
+import com.hm.hospitalproject.server.YuyueServer;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,12 +21,30 @@ import javax.servlet.http.HttpServletRequest;
  * @Date: 2021/01/05/9:10
  * @Description:
  */
-@RestController
+@Controller
 @Api(value = "分诊台系统",description = "分诊台系统")
-@RequestMapping("trageAction")
 public class TriageController {
     private static Logger log = LoggerFactory.getLogger(TriageController.class);
 
+    @Autowired
+    YuyueServer yuyueServer;
+
+    @PostMapping("/fenzhenlogin1")
+    public String fenzhenlogin1(
+            Model model,
+            @RequestParam(value ="userPassword",required = true) String userPassword ){
+        String error;
+        if (userPassword.equals("123456")){
+
+            List<OnlineGuahao> list=yuyueServer.getyuyueAll();
+            model.addAttribute("list",list);
+            return "/user/fenzhen";
+        }
+        error="密码错误";
+        model.addAttribute("error",error);
+        return "user/fenzhenlogin";
+
+    }
 
 
     //根据用户id查询预约表接口

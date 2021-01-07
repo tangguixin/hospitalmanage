@@ -2,6 +2,8 @@ package com.hm.hospitalproject.controller;
 
 import com.hm.hospitalproject.entity.DoctorInfo;
 import com.hm.hospitalproject.entity.PatientInfo;
+import com.hm.hospitalproject.entity.Prescription;
+import com.hm.hospitalproject.entity.Users;
 import com.hm.hospitalproject.server.DoctorServer;
 import com.hm.hospitalproject.server.PatientServer;
 import com.hm.hospitalproject.server.UserServer;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,9 +28,9 @@ import javax.servlet.http.HttpSession;
  * @Date: 2021/01/05/9:08
  * @Description:
  */
-@Controller
+
 @Api(value = "登录系统",description = "登录页面请求Api")
-@RequestMapping(value = "/loginAction")
+@Controller
 public class LoginController {
 
     private static Logger log = LoggerFactory.getLogger(PatientController.class);
@@ -44,44 +48,71 @@ public class LoginController {
     private DoctorServer doctorServer;
 
 
+  //异常
     @RequestMapping(value = "/login",method = RequestMethod.POST)
-    @ResponseBody
     @ApiOperation(value = "登录接口，成功后获取cookies",httpMethod = "POST")
     public String login(HttpServletRequest response, Model model,
-                        @RequestParam(value ="shenfenzheng",required = true) String shenfenzheng,
-                        @RequestParam(value = "password", required = true) String password,
-                        @RequestParam(value = "type", required = true) String type, HttpSession session){
+                        @RequestParam(value ="userIdenf",required = true) String userIdenf,
+                        @RequestParam(value = "userPassword", required = true) String userPassword,
+                        @RequestParam(value = "userType", required = true) String userType, HttpSession session){
 
-        Boolean islogin= userServer.login(shenfenzheng,password,type);
+        Boolean islogin= userServer.login(userIdenf,userPassword,userType);
 
-        if(type.equals("病人")&&islogin) {
-            PatientInfo patient=patientServer.getPatientInfoByshenfenzheng(shenfenzheng);
-            model.addAttribute("user", patient);
-            session.setAttribute("userInfo", patient);
+        if(userType.equals("病人")&&islogin) {
+            PatientInfo patient=patientServer.getPatientInfoByshenfenzheng(userIdenf);
+
+            PatientInfo patient1=new PatientInfo();
+            patient1.setShenfenzheng("111");
+            patient1.setUserAddress("asfasfd");
+            patient1.setUserId(2);
+            patient1.setUserName("aaa");
+            patient1.setUserPhone("4621654");
+            patient1.setUserPassword("111");
+            patient1.setUserSex("男");
+
+            model.addAttribute("user", patient1);
+            session.setAttribute("userInfo", patient1);
             return "index/index";
         }
-        else if(type.equals("医生")&&islogin) {
-            DoctorInfo doctor=doctorServer.getDoctorInfoByshenfenzheng(shenfenzheng);
-            model.addAttribute("user", doctor);
-            session.setAttribute("userInfo", doctor);
-           return "医生界面";
+        else if(userType.equals("医生")&&islogin) {
+            DoctorInfo doctor=doctorServer.getDoctorInfoByshenfenzheng(userIdenf);
+           return "doctor/doctorcaozuo";
         }
-        else if(type.equals("药房")&&islogin)
+        else if(userType.equals("药房")&&islogin)
         {
-            DoctorInfo doctor=doctorServer.getDoctorInfoByshenfenzheng(shenfenzheng);
-            model.addAttribute("user", doctor);
-            session.setAttribute("userInfo", doctor);
-            return "药房界面";
+            //DoctorInfo doctor=doctorServer.getDoctorInfoByshenfenzheng(userIdenf);
+            List<Prescription> py=new ArrayList<>();
+            Prescription prescription=new Prescription();
+            prescription.setId(1);
+            prescription.setDrugid(1);
+            prescription.setPatientId(1);
+            prescription.setJiesuan(1);
+            for(int i=1;i<4;i++)
+            {
+                py.add(prescription);
+            }
+            model.addAttribute("orderRecords",py);
+            session.setAttribute("orderRecords",py);
+            return "yaofang/pharmacy";
         }else {
-        return "登录主页";
+
+        return "user/login";
         }
     }
 
     @ApiOperation(value = "用户退出",httpMethod = "GET")
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
-    public String logout(HttpSession session){
+    @RequestMapping(value = "/logOff", method = RequestMethod.GET)
+    public String logOff(HttpSession session){
         session.invalidate();
-        return "登录界面";
+        return "index/index";
+    }
+
+    @ApiOperation(value = "test",httpMethod = "GET")
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    @ResponseBody
+    public Users test(HttpSession session){
+     Users ser=userServer.test();
+        return ser;
     }
 
 

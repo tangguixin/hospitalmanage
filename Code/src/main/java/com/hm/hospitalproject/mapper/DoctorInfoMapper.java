@@ -1,17 +1,10 @@
 package com.hm.hospitalproject.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hm.hospitalproject.entity.DoctorInfo;
+import org.springframework.stereotype.Repository;
 
-public interface DoctorInfoMapper {
-    int deleteByPrimaryKey(Integer doctorId);
+@Repository
+public interface DoctorInfoMapper  extends BaseMapper<DoctorInfo> {
 
-    int insert(DoctorInfo record);
-
-    int insertSelective(DoctorInfo record);
-
-    DoctorInfo selectByPrimaryKey(Integer doctorId);
-
-    int updateByPrimaryKeySelective(DoctorInfo record);
-
-    int updateByPrimaryKey(DoctorInfo record);
 }

@@ -1,19 +1,13 @@
 package com.hm.hospitalproject.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hm.hospitalproject.entity.Drugs;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
-@Component
-public interface DrugsMapper {
-    int deleteByPrimaryKey(Integer id);
+@Repository
+public interface DrugsMapper  extends BaseMapper<Drugs> {
 
-    int insert(Drugs record);
 
-    int insertSelective(Drugs record);
 
-    Drugs selectByPrimaryKey(Integer id);
-
-    int updateByPrimaryKeySelective(Drugs record);
-
-    int updateByPrimaryKey(Drugs record);
 }
+

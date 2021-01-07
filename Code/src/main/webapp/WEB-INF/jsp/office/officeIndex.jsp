@@ -35,16 +35,11 @@
 			<div class="row">
 				<div class="col-md-12">
 					<p class="text-left">推荐科室列表</p>
-					<div class="col-md-12">
-						<div class="nav navbar-nav navbar-right">
-							<a href="/ssm_pro/orderOffice/1">查看全部科室</a>
-						</div>
-					</div>
 				</div>
 			</div>
 			<hr />
 			<br /> <br />
-			<c:forEach var="office" items="${officeRe }" varStatus="status" >
+			<c:forEach var="office" items="${allrooms }" varStatus="status" >
 				<%-- <c:forEach var="i" begin="1" end="9" varStatus="status"> --%>
 				<div class="col-md-3">
 					<div class="thumbnail" style="width: 300px; height: 200px;">
@@ -54,13 +49,13 @@
 								width="200" />
 						</div> --%>
 						<div class="caption">
-							<h3>${office.officesName}</h3>
+							<h3>${office.roomname}</h3>
 							<p>
-								<span class="glyphicon glyphicon-home"></span>&nbsp;${office.hospitalName}
+								<span class="glyphicon glyphicon-home"></span>&nbsp;XX医院
 							</p>
 							<p>
 								<a class="btn btn-primary"
-									href="<c:url value='/officeInfoShow/${office.id}' />">现在预约</a>
+									href="<c:url value='/officeInfoShow/${office.roomId}' />">现在预约</a>
 							</p>
 						</div>
 					</div>

@@ -11,7 +11,9 @@ import org.springframework.stereotype.Service;
  * @Description:
  */
 
-@Service
+
+
 public interface CheckServer {
     Boolean addCheck(CheckIterm checkIterm);
+
 }

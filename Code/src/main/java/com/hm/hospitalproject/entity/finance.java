@@ -1,7 +1,10 @@
 package com.hm.hospitalproject.entity;
 
+import lombok.Data;
+
 import java.util.Date;
 
+@Data
 public class Finance {
     private Integer financeId;
 

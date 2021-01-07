@@ -48,6 +48,11 @@
                         <font color="#eb6864">病历编辑</font>
                     </p>
                 </div>
+                <div class="pull-right-bottom">
+                    <p class="text-danger"
+                       style="position: absolute; right: 60px; bottom: 300px"
+                       id="errorTip">${error}</p>
+                </div>
                 <form role="form" action="addcaserecoder" method="post" class="login-form">
                     <div class="form-group col-xs-12">
                         <label class="sr-only" for="patientId">病人id</label>病人id(*):<input
@@ -152,7 +157,7 @@
                 <form role="form" action="getAllrecoderBypatientid" method="post" class="login-form">
                     <div class="form-group col-xs-12">
                         <!-- 输入密码-->
-                        <label class="sr-only" for="patientId">patientId</label>密码(*):
+                        <label class="sr-only" for="patientId">patientId</label>病人id(*):
                         <input type="password" name="patientId"
                                class="form-password form-control" id="patientId3"
                                style="font-weight: bold" required >
@@ -175,6 +180,11 @@
     function cancel() {
         $("#cancel").submit();
         return false;
+    }
+</script>
+<script type="text/javascript">
+    function isClearTip() {
+        document.getElementById("errorTip").innerHTML = "";
     }
 </script>
 </html>

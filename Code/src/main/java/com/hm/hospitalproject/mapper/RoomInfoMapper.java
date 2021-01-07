@@ -1,17 +1,10 @@
 package com.hm.hospitalproject.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hm.hospitalproject.entity.RoomInfo;
+import org.springframework.stereotype.Repository;
 
-public interface RoomInfoMapper {
-    int deleteByPrimaryKey(Integer roomId);
 
-    int insert(RoomInfo record);
-
-    int insertSelective(RoomInfo record);
-
-    RoomInfo selectByPrimaryKey(Integer roomId);
-
-    int updateByPrimaryKeySelective(RoomInfo record);
-
-    int updateByPrimaryKey(RoomInfo record);
+@Repository
+public interface RoomInfoMapper  extends BaseMapper<RoomInfo> {
 }

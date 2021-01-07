@@ -12,7 +12,8 @@ import java.util.List;
  * @Date: 2021/01/07/2:24
  * @Description:
  */
-@Service
+
+
 public interface InspectionItemsServer {
  List<InspectionItems> getAllItems();
 }

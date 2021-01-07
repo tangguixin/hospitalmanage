@@ -1,20 +1,19 @@
 package com.hm.hospitalproject.mapper;
 
+
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.hm.hospitalproject.entity.Users;
 import org.springframework.stereotype.Repository;
 
 
+
+/**
+ * @author TGX
+ */
 @Repository
-public interface UsersMapper {
-    int deleteByPrimaryKey(Integer id);
 
-    int insert(Users record);
 
-    int insertSelective(Users record);
 
-    Users selectByPrimaryKey(Integer id);
+public interface UsersMapper extends BaseMapper<Users>{
 
-    int updateByPrimaryKeySelective(Users record);
-
-    int updateByPrimaryKey(Users record);
 }

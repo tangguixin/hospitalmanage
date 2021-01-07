@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
  * @Date: 2021/01/07/1:44
  * @Description:
  */
-@Service
+
+
+
 public interface PrescriptionServer {
     Boolean addPrescription(Prescription prescription);
 }

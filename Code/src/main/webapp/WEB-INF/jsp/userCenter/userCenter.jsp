@@ -30,6 +30,11 @@
 			<div class="row">
 				<div class="col-md-12">
 					<h3 class="text-left">个人中心</h3>
+					<!-- 在payin，payout界面处理完后都返回idnex -->
+					<!-- 后端用session.getAttribute()拿到病人信息，返回到payout界面 -->
+					<a class="navbar-brand" style="font-size: 12px;" href="<c:url value="/onlinePay" />"><strong><font color="#000">费用结算</font></strong></a>
+					<!-- 后端用session.getAttribute()拿到病人信息，返回到payin界面 -->
+					<a class="navbar-brand" style="font-size: 12px;" href="<c:url value="/onlinePay" />"><strong><font color="#000">退款结算</font></strong></a>
 				</div>
 			</div>
 			<hr />
@@ -61,17 +66,17 @@
 						</thead>
 						<tbody>
 							<!-- 函数返回的预约表信息-->
-							<c:forEach var="orderRecords" items="${orderRecords }"
+							<c:forEach var="orderRecords" items="${list }"
 								varStatus="status">
 								<tr>
 									<td>${ status.index + 1}</td>
-									<td>${orderRecords.transactDate }</td><!-- time-->
-									<td>${orderRecords.officesName }</td>
-									<td>${orderRecords.doctorName }</td>
-									<td><c:if test="${orderRecords.isFinish==0 }">
+									<td>${orderRecords.createTime }</td><!-- time-->
+									<td>${orderRecords.roomId }</td>
+									<td>${orderRecords.doctorId }</td>
+									<td><c:if test="${orderRecords.isSuccess==false }">
 											未处理
 										</c:if>
-										<c:if test="${orderRecords.isFinish==1 }">
+										<c:if test="${orderRecords.isSuccess==true }">
 											已处理
 										</c:if>
 									</td>
@@ -99,17 +104,17 @@
 							</div>
 							<div class="col-md-12">
 								<div class="col-md-3">
-									<h3>年龄：${commonUser.userMobile }</h3>
+									<h3>年龄：${commonUser.userPhone }</h3>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="col-md-12">
-									<h3>邮箱：${commonUser.userEmail }</h3>
+									<h3>地址：${commonUser.userAddress }</h3>
 								</div>
 							</div>
 							<div class="col-md-12">
 								<div class="col-md-12">
-									<h3>身份证：${commonUser.userIdenf }</h3>
+									<h3>身份证：${commonUser.shenfenzheng }</h3>
 								</div>
 							</div>
 						</div>
@@ -124,25 +129,7 @@
 					</div>
 
 					<table class="table table-striped table-hover ">
-						<thead>
-						<tr>
-							<th>订单</th>
-							<th>就诊时间</th><!-- time-->
-							<th>科室</th>
-							<th>医生</th>
-						</tr>
-						</thead>
-						<tbody>
-						<!-- 函数返回的预约表信息-->
-						<c:forEach var="orderRecords" items="${orderRecords }"
-								   varStatus="status">
-							<tr>
-								<td>${ status.index + 1}</td>
-								<td>${orderRecords.transactDate }</td><!-- time-->
-								<td>${orderRecords.officesName }</td>
-								<td>${orderRecords.doctorName }</td>
-							</tr>
-						</c:forEach>
+						当前你处于第${ waitinfo}位
 						</tbody>
 					</table>
 				</div>
@@ -157,26 +144,33 @@
 						<thead>
 						<tr>
 							<th>订单</th>
-							<th>就诊时间</th><!-- time-->
-							<th>科室</th>
+							<th>药品</th>
 							<th>医生</th>
 							<th>状态</th>
 						</tr>
 						</thead>
 						<tbody>
 						<!-- 函数返回的预约表信息-->
-						<c:forEach var="orderRecords" items="${orderRecords }"
+						<c:forEach var="orderRecords" items="${chufang }"
 								   varStatus="status">
 							<tr>
 								<td>${ status.index + 1}</td>
-								<td>${orderRecords.transactDate }</td><!-- time-->
-								<td>${orderRecords.officesName }</td>
-								<td>${orderRecords.doctorName }</td>
-								<td><c:if test="${orderRecords.isFinish==0 }">
-									未处理
+								<td>${orderRecords.drugid }</td>
+								<td>${orderRecords.doctorId }</td>
+								<td><c:if test="${orderRecords.jiesuan==0 }">
+									等待配药
 								</c:if>
 									<c:if test="${orderRecords.isFinish==1 }">
-										已处理
+										正在配药
+									</c:if>
+									<c:if test="${orderRecords.isFinish==2 }">
+										等待发药
+									</c:if>
+									<c:if test="${orderRecords.isFinish==3 }">
+										正在发药
+									</c:if>
+									<c:if test="${orderRecords.isFinish==-1 }">
+										退药
 									</c:if>
 								</td>
 							</tr>

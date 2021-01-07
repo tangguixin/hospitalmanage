@@ -22,6 +22,7 @@ import java.util.List;
  * @Date: 2021/01/05/13:18
  * @Description:
  */
+
 @Controller
 @RequestMapping("hospitalAction")
 @Api(value = "医院相关api",description = "eg:")
@@ -29,9 +30,8 @@ public class HospitalManager {
 
 
 
-    @Autowired
     private DrusServer drusServer;
-    @Autowired
+
     private InspectionItemsServer inspectionItemsServer;
 
 

@@ -29,7 +29,7 @@
     <div id="page-inner">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="text-left">个人中心</h3>
+                <h3 class="text-left">分诊中心</h3>
             </div>
         </div>
         <hr />
@@ -59,16 +59,16 @@
                     </thead>
                     <tbody>
                     <!-- 函数返回的预约表信息-->
-                    <c:forEach var="orderRecords" items="${orderRecords }"
+                    <c:forEach var="orderRecords" items="${list }"
                                varStatus="status">
-                        <c:if test="${orderRecords.isFinish==0 }">
+                        <c:if test="${orderRecords.isSuccess==false }">
                         <tr>
                             <td>${ status.index + 1}</td>
-                            <td>${orderRecords.transactDate }</td><!-- time-->
-                            <td>${orderRecords.officesName }</td>
-                            <td>${orderRecords.doctorName }</td>
+                            <td>${orderRecords.createTime }</td><!-- time-->
+                            <td>${orderRecords.roomId }</td>
+                            <td>${orderRecords.doctorId }</td>
                             <td><a class="navbar-brand" style="font-size: 12px;"
-                                   href="<c:url value="/logOff" />">分诊</a>
+                                   href="<c:url value="/fenzhen" />">分诊</a>
                             </td>
                         </c:if>
                         </tr>
@@ -89,7 +89,7 @@
                             <button type="submit" class="btn">立即挂号</button>
                         </div>
                     </form>
-                    <span><a href="/logOff">返回主页</a></span>
+                    <span><a href="logOff">返回主页</a></span>
                 </div>
             </div>
         </div>

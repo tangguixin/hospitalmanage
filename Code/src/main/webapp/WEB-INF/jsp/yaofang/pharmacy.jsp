@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="${mybasePath}assets/css/form-elements.css">
     <link rel="stylesheet" href="${mybasePath}assets/css/style.css">
 </head>
+<!-- 需要传回所有处方单 -->
 <body>
 <jsp:include page="../include/head.jsp" />
 <jsp:include page="../include/menu.jsp" />
@@ -29,37 +30,51 @@
     <div id="page-inner">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="text-left">历史病例</h3>
+                <h3 class="text-left">配药中心</h3>
             </div>
         </div>
         <hr />
         <ul class="nav nav-tabs">
-            <li class="active"><a href="#order" data-toggle="tab">历史病例</a></li>
+            <li class="active"><a href="#order" data-toggle="tab">待处理处方</a></li>
         </ul>
         <br>
         <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade active in text-left" id="order">
                 <div class="col-md-12">
                     <p class="text-left">
-                        <font color="#eb6864">历史病例</font>
+                        <font color="#eb6864">待处理处方</font>
                     </p>
                 </div>
 
                 <table class="table table-striped table-hover ">
                     <thead>
                     <tr>
-                        <th>病人id</th>
-                        <th>医生id</th><!-- time-->
-                        <th>详情</th>
+                        <th>订单</th>
+                        <th>患者id</th><!-- time-->
+                        <th>医生id</th>
+                        <th>药品id</th>
+                        <th>操作</th>
+                        <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <!-- 函数返回的预约表信息-->
-                    <c:forEach var="orderRecords" items="${caselist }">
+                    <!-- 函数返回的处方表信息-->
+                    <c:forEach var="orderRecords" items="${orderRecords }"
+                               varStatus="status">
                         <tr>
-                            <td>${orderRecords.patientsId }</td><
+                            <td>${ status.index + 1}</td>
+                            <td>${orderRecords.patientId }</td><!-- time-->
                             <td>${orderRecords.doctorId }</td>
-                            <td>${orderRecords.zhusu }</td>
+                            <td>${orderRecords.drugid }</td>
+                            <td><c:if test="${orderRecords.jiesuan ==0}">
+                                <a class="navbar-brand" style="font-size: 12px;" href="<c:url value="/addpeiyaoqueue" />"><strong>配药</strong></a>
+                                </c:if>
+                                <c:if test="${orderRecords.jiesuan ==1||orderRecords.jiesuan ==2}">
+                                <a class="navbar-brand" style="font-size: 12px;" href="<c:url value="/fayao" />"><strong>发药</strong></a>
+                                </c:if>
+                            <td>c:if test="${orderRecords.jiesuan !=-1}">
+                                <a class="navbar-brand" style="font-size: 12px;" href="<c:url value="/tuiyao" />"><strong>退药</strong></a>
+                            </td>
                         </tr>
                     </c:forEach>
                     </tbody>
@@ -74,10 +89,5 @@
 <script src="${mybasePath}assets/bootstrap/js/jquery.min.js"></script>
 <script src="${mybasePath}assets/js/jquery.backstretch.min.js"></script>
 
-<script type="text/javascript">
-    function cancel() {
-        $("#cancel").submit();
-        return false;
-    }
-</script>
+
 </html>
